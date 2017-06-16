@@ -1,0 +1,14 @@
+{% extends 'base_n.html.twig' %}
+
+{% block header_navigation_links %}
+  <li>
+    <a href="{{ path('admin_categ_index') }}">
+      <i class="fa fa-list-alt" aria-hidden="true"></i> {{ 'title.categoria_list'|trans }}
+    </a>
+  </li>
+  <li>
+    <a href="{{ path('admin_proj_index') }}">
+      <i class="fa fa-list-alt" aria-hidden="true"></i> {{ 'title.projecte_list'|trans }}
+    </a>
+  </li>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'admin/layout_r.html.twig' %}
+
+{% block body_id 'admin_projecte_edit' %}
+
+{% block main %}
+    <h1>{{ 'title.edit_post'|trans({'%id%': prj.id}) }}</h1>
+
+    {{ include('admin/projecte/_form.html.twig', {
+        form: form,
+        button_label: 'action.save'|trans,
+        include_back_to_home_link: true,
+    }, with_context = false) }}
+{% endblock %}
+
+{% block sidebar %}
+    <div class="section">
+        <a href="{{ path('admin_proj_show', {id: prj.id}) }}" class="btn btn-lg btn-block btn-success">
+            <i class="fa fa-eye" aria-hidden="true"></i> {{ 'action.show_prj'|trans }}
+        </a>
+    </div>
+
+    <div class="section actions">
+        {{ include('admin/projecte/_delete_form.html.twig', {prj: prj}, with_context = false) }}
+    </div>
+
+    {{ show_source_code(_self) }}
+{% endblock %}

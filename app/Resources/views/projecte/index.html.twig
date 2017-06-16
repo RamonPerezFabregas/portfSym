@@ -1,0 +1,27 @@
+{% extends 'base_n.html.twig' %}
+
+{% block body_id 'projecte_index' %}
+
+{% block main %}
+    {% for proj in projs %}
+        <article class="proj">
+          <a href="{{ path('projecte_detall', {id: proj.id}) }}">
+            <h2>{{ proj.titol }}</h2>
+            <img src="{{proj.foto }}">
+          </a>
+        </article>
+    {% else %}
+        <div class="well">{{ 'proj.no_projs_found'|trans }}</div>
+    {% endfor %}
+
+    {% if projs.haveToPaginate %}
+        <div class="navigation text-center">
+            {{ pagerfanta(projs, 'twitter_bootstrap3_translated', {routeName: 'projecte_index_paginated'}) }}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block sidebar %}
+    {{ show_source_code(_self) }}
+    {{ include('projecte/_rss.html.twig') }}
+{% endblock %}

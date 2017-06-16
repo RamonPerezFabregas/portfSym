@@ -1,0 +1,32 @@
+{% extends 'base_n.html.twig' %}
+
+{% block header_navigation_links %}
+
+    <li>
+        <a href="{{ path('blog_index') }}">
+            <i class="fa fa-home" aria-hidden="true"></i> {{ 'menu.back_to_blog'|trans }}
+        </a>
+    </li>
+{% endblock %}
+
+{% block body_id 'admin_cat_new' %}
+
+{% block main %}
+    <h1>{{ 'title.cat_new'|trans }}</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.categoria) }}
+
+        <input type="submit" value="{{ 'label.create_categoria'|trans }}" class="btn btn-primary" />
+        {{ form_widget(form.saveAndCreateNew, {label: 'label.save_and_create_new_cat', attr: {class: 'btn btn-primary'}}) }}
+        <a href="{{ path('admin_categ_index') }}" class="btn btn-link">
+            {{ 'action.back_to_list_cat'|trans }}
+        </a>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+
+    {{ show_source_code(_self) }}
+{% endblock %}

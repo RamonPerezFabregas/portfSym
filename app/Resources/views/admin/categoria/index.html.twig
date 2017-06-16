@@ -1,0 +1,43 @@
+{% extends 'admin/layout_r.html.twig' %}
+
+{% block body_id 'admin_categ_index' %}
+
+{% block main %}
+  <h1>{{ 'title.categoria_list'|trans }}</h1>
+  <table class="table table-striped table-middle-aligned">
+    <thead>
+      <tr>
+        <th scope="col">{{ 'label.descripcio'|trans }}</th>
+        <th scope="col" class="text-right"><i class="fa fa-cogs" aria-hidden="true"></i> {{ 'label.actions'|trans }}</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for cat in categ %}
+      <tr>
+        <td>{{cat.id}} - {{ cat.categoria }} </td>
+        <td class="text-right">
+          <div class="item-actions">
+              <a href="{{ path('admin_cat_edit', {id: cat.id}) }}" class="btn btn-sm btn-primary">
+                  <i class="fa fa-edit" aria-hidden="true"></i> {{ 'action.edit'|trans }}
+              </a>
+          </div>
+        </td>
+      </tr>
+    {% else %}
+      <tr>
+        <td colspan="2" align="center">{{ 'cat.no_categoria_found'|trans }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+  
+{% block sidebar %}
+    <div class="section actions">
+        <a href="{{ path('admin_cat_new') }}" class="btn btn-lg btn-block btn-success">
+            <i class="fa fa-plus" aria-hidden="true"></i> {{ 'action.create_categoria'|trans }}
+        </a>
+    </div>
+
+    {{ show_source_code(_self) }}
+{% endblock %}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>{{ 'rss.title'|trans }}</title>
+        <description>{{ 'rss.description'|trans }}</description>
+        <pubDate>{{ 'now'|date('r', timezone='GMT') }}</pubDate>
+        <link>{{ url('projecte_index') }}</link>
+        <language>{{ app.request.locale }}</language>
+
+        {% for proj in projs %}
+            <item>
+                <title>{{ proj.titol }}</title>
+                <description>{{ proj.descripcio }}</description>
+                <link>{{ url('projecte_detall', {'id': proj.id}) }}</link>
+                <guid>{{ url('projecte_detall', {'id': proj.id}) }}</guid>
+            </item>
+        {% endfor %}
+    </channel>
+</rss>

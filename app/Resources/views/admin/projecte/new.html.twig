@@ -1,0 +1,26 @@
+{% extends 'admin/layout_r.html.twig' %}
+
+{% block body_id 'admin_proj_new' %}
+
+{% block main %}
+    <h1>{{ 'title.proj_new'|trans }}</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.foto) }}
+        {{ form_row(form.titol) }}
+        {{ form_row(form.descripcio) }}
+        {{ form_row(form.anny) }}
+        {{ form_row(form.tipus) }}
+
+        <input type="submit" value="{{ 'label.create_projecte'|trans }}" class="btn btn-primary" />
+        {{ form_widget(form.saveAndCreateNew, {label: 'label.save_and_create_new_proj', attr: {class: 'btn btn-primary'}}) }}
+        <a href="{{ path('admin_proj_index') }}" class="btn btn-link">
+            {{ 'action.back_to_list_proj'|trans }}
+        </a>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block sidebar %}
+
+    {{ show_source_code(_self) }}
+{% endblock %}

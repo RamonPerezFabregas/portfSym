@@ -1,0 +1,24 @@
+{% extends 'base_n.html.twig' %}
+
+{% block body_id 'detall_proj_show' %}
+
+{% block main %}
+    <h1>{{ proj.titol }}</h1>
+    <img src="{{ proj.foto }}">
+    <p>{{ proj.descripcio }}</p>
+    <p>{{ proj.anny }} </p>
+    <p>{{ proj.tipus }} </p>
+{% endblock %}
+
+{% block sidebar %}
+    {% if is_granted('edit', proj) %}
+        <div class="section">
+            <a class="btn btn-lg btn-block btn-success" href="{{ path('admin_proj_edit', {id: proj.id}) }}">
+                <i class="fa fa-edit" aria-hidden="true"></i> {{ 'action.edit_proj'|trans }}
+            </a>
+        </div>
+    {% endif %}
+
+    {{ show_source_code(_self) }}
+    {{ include('projecte/_rss.html.twig') }}
+{% endblock %}

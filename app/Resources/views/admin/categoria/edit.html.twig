@@ -1,0 +1,33 @@
+{% extends 'base_n.html.twig' %}
+
+{% block header_navigation_links %}
+
+    <li>
+        <a href="{{ path('admin_cat_index') }}">
+            <i class="fa fa-home" aria-hidden="true"></i> {{ 'menu.back_to_cat'|trans }}
+        </a>
+    </li>
+{% endblock %}
+
+{% block body_id 'admin_cat_edit' %}
+
+{% block main %}
+    <h1>{{ 'title.edit_cat'|trans({'%id%': cat.id}) }}</h1>
+    {{ include('admin/categoria/_form.html.twig', {
+        form: form,
+        button_label: 'action.save'|trans,
+        include_back_to_home_link: true,
+    }, with_context = false) }}
+{% endblock %}
+
+{% block sidebar %}
+    <div class="section">
+        <a href="{{ path('admin_categ_index') }}" class="btn btn-lg btn-block btn-success">
+            <i class="fa fa-eye" aria-hidden="true"></i> {{ 'action.show_cat'|trans }}
+        </a>
+    </div>
+
+    {{ parent() }}
+
+    {{ show_source_code(_self) }}
+{% endblock %}
