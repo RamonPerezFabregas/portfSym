@@ -40,20 +40,10 @@ class Projecte
     */
    private $anny;
     
-   /**
-     * @var Categoria[]|ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Categoria", cascade={"persist"})
-     * @ORM\JoinTable(name="projecte_categoria")
-     * @ORM\OrderBy({"categoria": "ASC"})
-     * @Assert\Count(max="4", maxMessage="proj.too_many_cats")
-     */
+    /**
+    * @ORM\Column(type="integer")
+    */
    private $tipus;   
-
-   public function __construct()
-   {
-        $this->tipus = new ArrayCollection();
-   }
    
     /**
      * Get id
@@ -159,17 +149,11 @@ class Projecte
         return $this->anny;
     }
 
-
-    public function addTipus(Categoria $cat)
+    public function setTipus($tipus)
     {
-        if (!$this->tipus->contains($cat)) {
-            $this->tipus->add($cat);
-        }
-    }
+      $this->tipus = $tipus;
 
-    public function removeTipus(Categoria $cat)
-    {
-        $this->tipus->removeElement($cat);
+        return $this;
     }
    
     public function getTipus()

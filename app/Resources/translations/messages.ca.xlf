@@ -338,6 +338,18 @@
               <source>prj.no_projecte_found</source>
               <target>No s'han trobat projectes</target>
             </trans-unit>
+            <trans-unit id="projecte.label_anny">
+              <source>projecte.label_anny</source>
+              <target>Any</target>
+            </trans-unit>
+            <trans-unit id="projecte.label_categoria">
+              <source>projecte.label_categoria</source>
+              <target>Categoria</target>
+            </trans-unit>
+            <trans-unit id="projecte.label_descripcio">
+              <source>projecte.label_descripcio</source>
+              <target>Descripció</target>
+            </trans-unit>
             
             <trans-unit id="label.create_categoria">
               <source>label.create_categoria</source>

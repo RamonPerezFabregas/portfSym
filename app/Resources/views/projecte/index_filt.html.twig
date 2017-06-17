@@ -13,12 +13,6 @@
     {% else %}
         <div class="well">{{ 'proj.no_projs_found'|trans }}</div>
     {% endfor %}
-    
-    {% if projs.haveToPaginate %}
-        <div class="navigation text-center">
-            {{ pagerfanta(projs, 'twitter_bootstrap3_translated', {routeName: 'projecte_index_paginated'}) }}
-        </div>
-    {% endif %}
 {% endblock %}
 
 {% block sidebar %}

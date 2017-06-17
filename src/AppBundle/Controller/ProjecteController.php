@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Controller used to manage projecte contents in the public part of the site.
- *
+ * 
  * @Route("/projecte")
  */
 class ProjecteController extends Controller
@@ -63,7 +63,29 @@ class ProjecteController extends Controller
         if ('dev' === $this->getParameter('kernel.environment')) {
             dump($proj, $this->get('security.token_storage')->getToken()->getUser(), new \DateTime());
         }
-
         return $this->render('projecte/proj_show.html.twig', ['proj' => $proj]);
     }
+    
+     /**
+     * @Route("/categoria/{categoria}", requirements={"categoria": "[1-9]\d*"},  name="proj_filtrat")
+     * @Method("GET")
+     */    
+    public function projFilter($categoria)
+    {
+      $projs = $this->getDoctrine()->getRepository(Projecte::class)->findBy(array('tipus'=>$categoria)); //
+
+      return $this->render('projecte/index_filt.html.twig', ['projs' => $projs]);
+    }
+    
+    /**
+     * @Route("/anny/{anny}", requirements={"anny": "[1-9]\d*"},  name="proj_filtrat_any")
+     * @Method("GET")
+     */    
+    public function projFilterAny($anny)
+    {
+      $projs = $this->getDoctrine()->getRepository(Projecte::class)->findBy(array('anny'=>$anny)); //
+
+      return $this->render('projecte/index_filt.html.twig', ['projs' => $projs]);
+    }
+    
 }

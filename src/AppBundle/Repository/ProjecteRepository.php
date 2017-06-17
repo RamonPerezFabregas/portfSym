@@ -32,6 +32,19 @@ class ProjecteRepository extends EntityRepository
         return $this->createPaginator($query, $page);
     }
 
+    public function findFiltre($cat, $page = 1)
+    {
+      $query = $this->getEntityManager()
+            ->createQuery('
+                SELECT p
+                FROM AppBundle:Projecte p
+                WHERE p.tipus = $cat 
+                ORDER BY p.id DESC
+            ')
+        ;
+        return $this->createPaginator($query, $page);
+    }
+    
     private function createPaginator(Query $query, $page)
     {
         $paginator = new Pagerfanta(new DoctrineORMAdapter($query));

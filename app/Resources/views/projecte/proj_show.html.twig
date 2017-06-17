@@ -4,10 +4,14 @@
 
 {% block main %}
     <h1>{{ proj.titol }}</h1>
-    <img src="{{ proj.foto }}">
-    <p>{{ proj.descripcio }}</p>
-    <p>{{ proj.anny }} </p>
-    <p>{{ proj.tipus }} </p>
+    <p align="center"><img src="{{ proj.foto }}"></p>
+    <br>
+    <p><b>{{ 'projecte.label_descripcio'|trans }}:</b></p>
+    <p align="justify">{{ proj.descripcio }}</p>
+    <p><b>{{ 'projecte.label_anny'|trans }}:</b><a href="{{path('proj_filtrat_any', {anny: proj.anny })}}"> {{ proj.anny }} </a></p>
+    
+    
+    <p><b>{{ 'projecte.label_categoria'|trans }}: </b><a href="{{path('proj_filtrat', {categoria: proj.tipus })}}">{{ proj.tipus }}</a></p>
 {% endblock %}
 
 {% block sidebar %}
@@ -20,5 +24,4 @@
     {% endif %}
 
     {{ show_source_code(_self) }}
-    {{ include('projecte/_rss.html.twig') }}
 {% endblock %}

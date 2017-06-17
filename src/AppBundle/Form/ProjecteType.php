@@ -29,8 +29,8 @@ class ProjecteType extends AbstractType
             ->add('anny', IntegerType::class, 
                 [ 'attr' => array('min'=>2000,'max'=>3000),
                   'label' => 'label.anny',
-            ])  //null,// 
-            ->add('tipus', CategoriaInputType::class,
+            ])  //
+            ->add('tipus', null,// CategoriaInputType::class,
             [
                 'label' => 'label.tipus',
                 'required' => false,

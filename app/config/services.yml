@@ -30,7 +30,13 @@ services:
         arguments: ['@doctrine.orm.entity_manager']
         tags:
             - { name: form.type }
-
+    
+    app.form.type.categoriainput:
+        class: AppBundle\Form\Type\CategoriaInputType
+        arguments: ['@doctrine.orm.entity_manager']
+        categoria:
+            - { name: form.type }
+            
     # Event Listeners are classes that listen to one or more specific events.
     # Those events are defined in the tags added to the service definition.
     # See https://symfony.com/doc/current/event_dispatcher.html#creating-an-event-listener
